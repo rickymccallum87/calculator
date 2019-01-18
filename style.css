@@ -1,0 +1,53 @@
+header h1 {
+    text-align: center;
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    width: 480px;
+    margin: 0 auto;
+}
+
+button {
+    /* height: 75px; */
+    margin: 5px;
+    padding: 25px;
+    font-size: 2em;
+}
+
+#display {
+    grid-column: 1 / 5;
+    padding: 20px;
+    margin: 5px;
+    text-align: right;
+    vertical-align: center;
+    font-size: 3em;
+    background-color: #eee;
+}
+
+#clear {
+    grid-column: 1 / 4;
+    grid-row: 2;
+}
+
+#divide {
+    grid-column: 4;
+    grid-row: 2;
+}
+
+#multiply {
+    grid-column: 4;
+    grid-row: 3;
+}
+
+#subtract {
+    grid-column: 4;
+    grid-row: 4;
+}
+
+#add {
+    grid-column: 4;
+    grid-row: 5 / 7;
+}
