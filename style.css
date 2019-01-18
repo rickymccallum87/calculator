@@ -11,7 +11,6 @@ header h1 {
 }
 
 button {
-    /* height: 75px; */
     margin: 5px;
     padding: 25px;
     font-size: 2em;
@@ -29,22 +28,6 @@ button {
 
 #clear {
     grid-column: 1 / 4;
-    grid-row: 2;
-}
-
-#divide {
-    grid-column: 4;
-    grid-row: 2;
-}
-
-#multiply {
-    grid-column: 4;
-    grid-row: 3;
-}
-
-#subtract {
-    grid-column: 4;
-    grid-row: 4;
 }
 
 #add {
