@@ -43,4 +43,4 @@ button {
 #add { order: 14; grid-area: 5 / 4 / 7 / 5; }
 #zero { order: 15; }
 #dot { order: 16; }
-#operate { order: 17; }
+#equals { order: 17; }

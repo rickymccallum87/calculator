@@ -1,17 +1,11 @@
-const numericButtons = document.querySelectorAll('button.numeric');
-
-numericButtons.forEach( (e) => {
-    e.addEventListener('click', () => {
-        display.textContent += e.textContent;
-    });
-});
-
 const add = (a, b) => { return a + b; };
 const subtract = (a, b) => { return a - b; };
 const multiply = (a, b) => { return a * b; };
 const divide = (a, b) => { return a / b; };
 
-function operate(operator, num1, num2) {
+function operate(num1, operator, num2) {
+    num1 = +num1;
+    num2 = +num2;
     switch (operator) {
         case '+':
             return add(num1, num2);
@@ -26,44 +20,46 @@ function operate(operator, num1, num2) {
     }
 }
 
-const btnAdd = document.querySelector('#add');
-const btnSub = document.querySelector('#subtract');
-const btnMult = document.querySelector('#multiply');
-const btnDiv = document.querySelector('#divide');
-const btnEqual = document.querySelector('#operate');
-const btnClr = document.querySelector('#clear');
-
 const display = document.querySelector('#display');
-let displayValue;
-updateDisplay();
+const clear = document.querySelector('#clear');
+const numbers = document.querySelectorAll('button.number');
+const operators = document.querySelectorAll('button.operator');
+const equals = document.querySelector('#equals');
+let inputs = [''];
 
 function updateDisplay() {
-    displayValue = display.textContent;
+    display.textContent = inputs[inputs.length - 1];
 }
 
-
-btnClr.addEventListener('click', () => {
-    display.textContent = '';
-    updateDisplay();
+numbers.forEach( (node) => {
+    node.addEventListener('click', () => {
+        if (inputs.length < 2) {
+            inputs[0] += node.textContent;
+        } else {
+            inputs[inputs.length - 1] += node.textContent;
+        }
+        console.log(inputs);
+        updateDisplay();
+    });
 });
 
-btnAdd.addEventListener('click', () => {
-    updateDisplay();
+operators.forEach( (node) => {
+    node.addEventListener('click', () => {
+        inputs.push(node.textContent);
+        inputs.push('');
+        console.log(inputs);
+    });
 });
 
-btnSub.addEventListener('click', () => {
+equals.addEventListener('click', () => {
+    inputs[0] = operate(...inputs);
+    inputs.splice(1);
     updateDisplay();
+    console.log(inputs);
 });
 
-btnMult.addEventListener('click', () => {
+clear.addEventListener('click', () => {
+    inputs = [''];
     updateDisplay();
-});
-
-btnDiv.addEventListener('click', () => {
-    updateDisplay();
-});
-
-btnEqual.addEventListener('click', () => {
-    // Operate
-    updateDisplay();
+    console.log(inputs);
 });
