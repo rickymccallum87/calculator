@@ -32,7 +32,7 @@ function updateDisplay() {
 }
 
 function solve() {
-    inputs[0] = operate(...inputs);
+    inputs[0] = operate(...inputs).toFixed(5);
     inputs.splice(1);
     updateDisplay();
 }
