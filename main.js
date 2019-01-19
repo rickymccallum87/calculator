@@ -31,6 +31,12 @@ function updateDisplay() {
     display.textContent = inputs[inputs.length - 1];
 }
 
+function solve() {
+    inputs[0] = operate(...inputs);
+    inputs.splice(1);
+    updateDisplay();
+}
+
 numbers.forEach( (node) => {
     node.addEventListener('click', () => {
         if (inputs.length < 2) {
@@ -38,28 +44,28 @@ numbers.forEach( (node) => {
         } else {
             inputs[inputs.length - 1] += node.textContent;
         }
-        console.log(inputs);
+        // console.log(inputs);
         updateDisplay();
     });
 });
 
 operators.forEach( (node) => {
     node.addEventListener('click', () => {
+        if (inputs.length > 2) {
+            solve();
+        }
         inputs.push(node.textContent);
         inputs.push('');
-        console.log(inputs);
+        // console.log(inputs);
     });
 });
 
 equals.addEventListener('click', () => {
-    inputs[0] = operate(...inputs);
-    inputs.splice(1);
-    updateDisplay();
-    console.log(inputs);
+    solve();
 });
 
 clear.addEventListener('click', () => {
     inputs = [''];
     updateDisplay();
-    console.log(inputs);
+    // console.log(inputs);
 });
